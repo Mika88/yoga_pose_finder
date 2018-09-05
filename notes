@@ -1,2 +1,25 @@
 Pose class:
 creates instances of poses from a hash with info from scraper
+
+user greeting
+yoga for list: (scrape from page)
+-asthma
+-back pain
+-anxiety
+
+select category
+...
+
+
+yoga for asthma:
+list of poses (scrape from page)
+-bow
+-bridge
+...
+select pose (scrape pose page) 
+-name: bow
+-sanskrit name: Dhanurasana
+...
+another pose?
+
+come back to main manue\exit
