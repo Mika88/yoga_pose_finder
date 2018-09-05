@@ -3,11 +3,11 @@ require_relative '../config/environment'
 @@all = []
 
 class Benefit
-  attr_accessor :name, :pose
+  attr_accessor :name, :poses
   
   def initialize(name, pose)
     @name = name
-    @pose = pose
+    @poses = poses
     @@all <<self
     @poses = []
   end
