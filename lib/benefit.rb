@@ -5,7 +5,7 @@ require_relative '../config/environment'
 class Benefit
   attr_accessor :name, :poses
   
-  def initialize(name, pose)
+  def initialize(name, poses)
     @name = name
     @poses = poses
     @@all <<self
@@ -18,5 +18,9 @@ class Benefit
   
   def add_pose(pose)
     @poses << pose
+  end
+  
+  def print_poses
+   @poses.each_with_index{|pose| puts "#{index+1}. pose.name"}
   end
 end
