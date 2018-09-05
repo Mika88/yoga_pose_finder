@@ -7,7 +7,6 @@ class Benefit
   
   def initialize(name, poses)
     @name = name
-    @poses = poses
     @@all <<self
     @poses = []
   end
