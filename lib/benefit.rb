@@ -16,7 +16,7 @@ class Benefit
     @@all
   end
   
-  def poses
-    
+  def add_pose(pose)
+    @poses << pose
   end
 end
