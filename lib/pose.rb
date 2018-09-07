@@ -1,11 +1,15 @@
 class YogaPoseFinder::Pose
-  attr_accessor :name, :sanskrit_name, :level, :benefits, :description, :instructions
+  attr_accessor :name, :sanskrit_name, :level, :category, :description, :instructions
   @@all = []
   
   def initialize(pose_hash)
      pose_hash.each do |attr, value|
     self.send "#{attr}=", value
-   end
+    end
+   self.save
+  end
+  
+  def save
     @@all << self
   end
   
