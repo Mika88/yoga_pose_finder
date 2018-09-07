@@ -1,10 +1,6 @@
-require 'pry'
-require_relative '../config/environment'
-@@all = []
-
-class Benefit
+class YogaPoseFinder::Category
   attr_accessor :name, :poses
-  
+  @@all = []
   def initialize(name, poses)
     @name = name
     @@all <<self
