@@ -1,3 +1,6 @@
+#should be initialized with a name and an empty array of poses
+#should add the poses for each category from scraper
+#should have an array of poses instances
 class YogaPoseFinder::Category
   attr_accessor :name, :poses
   @@all = []
@@ -14,9 +17,5 @@ class YogaPoseFinder::Category
   
   def add_pose(pose)
     @poses << pose
-  end
-  
-  def print_poses
-   @poses.each_with_index{|pose| puts "#{index+1}. pose.name"}
   end
 end

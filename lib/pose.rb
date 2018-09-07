@@ -1,3 +1,6 @@
+#initialize a new pose with attr.
+#save all poses to an Array
+#let each pose know about their category
 class YogaPoseFinder::Pose
   attr_accessor :name, :sanskrit_name, :level, :category, :description, :instructions
   @@all = []
