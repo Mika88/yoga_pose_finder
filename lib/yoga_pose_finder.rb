@@ -1,5 +1,5 @@
 require "yoga_pose_finder/version"
-
+require_relative '../config/environment'
 module YogaPoseFinder
-  # Your code goes here...
+  
 end

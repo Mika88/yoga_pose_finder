@@ -1,7 +1,4 @@
-require 'pry'
-require_relative '../config/environment'
-
-class Pose
+class YogaPoseFinder::Pose
   attr_accessor :name, :sanskrit_name, :level, :benefits, :description, :instructions
   @@all = []
   
