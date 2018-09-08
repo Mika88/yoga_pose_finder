@@ -8,7 +8,7 @@ class Category
   attr_accessor :name, :poses
   @@all = []
   
-  def initialize(name, poses)
+  def initialize(name)
     @name = name
     @@all <<self
     @poses = []
