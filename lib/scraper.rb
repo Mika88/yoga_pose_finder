@@ -13,7 +13,12 @@ class Scraper
     get_page.css("section.m-card-group-container div.l-grid--item h2")
   end
   
-  def benefits_array
+   def benefits_array
     yoga_by_benefit_scraper.collect{|benefit| benefit.text}
   end
+  
+  def poses_index_url
+    get_page.css("div.m-card--content a").collect{|url| url.attribute("href").value}
+  end
 end
+binding.pry

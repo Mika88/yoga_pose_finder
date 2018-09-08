@@ -9,5 +9,5 @@
 #create a pose finder with all poses -- alphabetized w.(category)-> allow user to choose from list. 
 
 class Cli
-  
+
 end

@@ -6,7 +6,6 @@ require_relative '../config/environment'
 
 class Benefit
   attr_accessor :name, :poses
-  @@all = []
   
   def initialize(name)
     @name = name
