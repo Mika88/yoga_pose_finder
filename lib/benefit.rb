@@ -16,7 +16,6 @@ class Benefit
     @@all
   end
   
-  
   def add_pose(pose)
     @poses << pose
     pose.category = self

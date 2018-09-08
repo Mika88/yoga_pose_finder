@@ -18,7 +18,6 @@ class Cli
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
-      benefits_array = Scraper.new.benefits_array.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit}" }
       
       input = gets.strip
       index = input.to_i - 1
@@ -26,5 +25,7 @@ class Cli
       benefits_array[index]
       
   end
-  
+  def benefits_list
+    Scraper.new.benefits_array.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit}" }
+  end
 end
