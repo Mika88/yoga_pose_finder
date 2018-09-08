@@ -20,5 +20,6 @@ class Category
   
   def add_pose(pose)
     @poses << pose
+    pose.category = self
   end
 end
