@@ -7,7 +7,13 @@ require_relative '../config/environment'
 class Pose
   attr_accessor :name, :sanskrit_name, :level, :category, :description, :instructions
   @@all = []
-  
+  pigeon = {
+      :name=>"easy pose", 
+      :level=> "1", 
+      :category=> calm, 
+      :desctiption=>"Don't let the name fool you. If you're used to sitting in chairs, Easy Pose or Sukhasana can be quite challenging."
+      }
+      
   def initialize(pose_hash)
      pose_hash.each do |attr, value|
     self.send "#{attr}=", value
