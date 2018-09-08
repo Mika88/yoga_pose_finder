@@ -17,7 +17,7 @@ class Scraper
     yoga_by_benefit_scraper.collect{|benefit| benefit.text}
   end
   
-  def poses_index_url
+  def benefits_index_url
     get_page.css("div.m-card--content a").collect{|url| url.attribute("href").value}
   end
 end
