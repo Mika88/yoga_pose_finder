@@ -12,20 +12,19 @@
 require_relative '../config/environment'
 
 class Cli
-  def call
+  def start
     puts "Hi there Yogi! Welcome to the Find-My-Yoga App,"
     puts "where we help you find the perfect yoga pose for you :)"
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
-      Scraper.new.benefits_array.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit}" }
+      benefits_array = Scraper.new.benefits_array.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit}" }
+      
+      input = gets.strip
+      index = input.to_i - 1
+      
+      benefits_array[index]
+      
   end
   
-  def start
-    
-    input = gets.strip
-    index = input.to_i - 1 
-    
-     Benefit.all[index]
-   end 
 end
