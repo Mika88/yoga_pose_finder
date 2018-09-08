@@ -3,11 +3,13 @@
 #let each pose know about their category
 
 require_relative '../config/environment'
+
 easy_pose = {
       :name=>"easy pose", 
       :level=> "1", 
       :description=>"Don't let the name fool you. If you're used to sitting in chairs, Easy Pose or Sukhasana can be quite challenging."
       }
+      
 class Pose
   attr_accessor :name, :sanskrit_name, :level, :benefit, :description, :instructions
   @@all = []

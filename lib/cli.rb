@@ -1,3 +1,4 @@
+
 #should greet the user
 #print out list of categories
 #ask for the desired category/ pose finder?
@@ -12,17 +13,19 @@ require_relative '../config/environment'
 
 class Cli
   def call
-    puts "Hello! welcome to the Yoga-Pose-Finder App."
-    scraper = Scraper.new
-    scraper.benefits_array.each_with_index{|benefint| puts "#{index + 1}. #{benefit}" }
+    puts "Hi there Yogi! Welcome to the Find-My-Yoga App,"
+    puts "where we help you find the perfect yoga pose for you :)"
+    puts "Look through this list of categories and enter the number of"
+    puts "the category you would like to check out." 
     
-    puts "Above is a list of different categories of yoga poses," 
-    puts "enter the number of the category you would like to check out." 
-
+      Scraper.new.benefits_array.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit}" }
+  end
+  
+  def start
+    
     input = gets.strip
     index = input.to_i - 1 
     
      Benefit.all[index]
    end 
 end
-binding.pry
