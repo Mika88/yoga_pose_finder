@@ -22,7 +22,11 @@ class Benefit
     pose.category = self
   end
   
-  def create_from_collection(benefits_array)
-    benefits_array = Scraper.new.yoga_by_benefit_scraper
+  def self.create_from_collection
+    Scraper.new.benefits_array.each{|benefit| self.new(benefit)
+  end
+    
+    
   end
 end
+binding.pry
