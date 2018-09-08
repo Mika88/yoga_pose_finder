@@ -25,8 +25,5 @@ class Benefit
   def self.create_from_collection
     Scraper.new.benefits_array.each{|benefit| self.new(benefit)
   end
-    
-    
-  end
 end
 binding.pry
