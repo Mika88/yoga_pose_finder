@@ -17,8 +17,12 @@ class Scraper
     yoga_by_benefit_scraper.collect{|benefit| benefit.text}
   end
   
-  def benefits_index_url
+  def benefits_url_scraper
     get_page.css("div.m-card--content a").collect{|url| url.attribute("href").value}
+  end
+  
+  def benefits_url_array
+    benefits_url_scraper.collect{|url| "www.yogajournal.com#{url.strip}"}
   end
 end
 binding.pry

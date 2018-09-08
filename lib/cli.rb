@@ -24,9 +24,12 @@ class Cli
       index = input.to_i - 1
       
       benefits_list[index]
-      
   end
+  
   def benefits_list
     Benefit.create_from_collection.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit.name}" }
+  end
+  
+  def poses_list
   end
 end

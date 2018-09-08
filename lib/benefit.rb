@@ -3,11 +3,12 @@
 require_relative '../config/environment'
 
 class Benefit
-  attr_accessor :name, :poses
+  attr_accessor :name, :poses, :url
   @@all = []
   
-  def initialize(name)
+  def initialize(name, url)
     @name = name
+    @url = url
     @@all <<self
     @poses = []
   end
