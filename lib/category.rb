@@ -23,3 +23,4 @@ class Category
     pose.category = self
   end
 end
+binding.pry
