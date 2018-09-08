@@ -1,7 +1,10 @@
 #should be initialized with a name and an empty array of poses
 #should add the poses for each category from scraper
 #should have an array of poses instances
-class YogaPoseFinder::Category
+
+require_relative '../config/environment'
+
+class Category
   attr_accessor :name, :poses
   @@all = []
   

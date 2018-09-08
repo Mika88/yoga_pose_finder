@@ -8,6 +8,6 @@
 #ask the user if he wants to choose a different pose fron same category, or go back to main list. 
 #create a pose finder with all poses -- alphabetized w.(category)-> allow user to choose from list. 
 
-class YogaPoseFinder::Cli
+class Cli
   
 end
