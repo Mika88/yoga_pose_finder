@@ -4,7 +4,7 @@
 
 require_relative '../config/environment'
 
-class Category
+class Benefit
   attr_accessor :name, :poses
   @@all = []
   
@@ -21,5 +21,9 @@ class Category
   def add_pose(pose)
     @poses << pose
     pose.category = self
+  end
+  
+  def create_from_collection(benefits_array)
+    benefits_array = Scraper.new.yoga_by_benefit_scraper
   end
 end

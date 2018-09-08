@@ -9,7 +9,7 @@ easy_pose = {
       :description=>"Don't let the name fool you. If you're used to sitting in chairs, Easy Pose or Sukhasana can be quite challenging."
       }
 class Pose
-  attr_accessor :name, :sanskrit_name, :level, :category, :description, :instructions
+  attr_accessor :name, :sanskrit_name, :level, :benefit, :description, :instructions
   @@all = []
   def initialize(pose_hash)
      pose_hash.each do |attr, value|

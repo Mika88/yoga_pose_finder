@@ -12,5 +12,8 @@ class Scraper
   def yoga_by_benefit_scraper
     get_page.css("section.m-card-group-container div.l-grid--item h2")
   end
+  
+  def benefits_array
+    yoga_by_benefit_scraper.collect{|benefit| benefit.text}
+  end
 end
-binding.pry
