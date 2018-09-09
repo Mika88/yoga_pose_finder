@@ -24,5 +24,6 @@ class Scraper
   def benefits_url_array
     benefits_url_scraper.collect{|url| "www.yogajournal.com#{url.strip}"}
   end
+  
 end
 binding.pry
