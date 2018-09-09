@@ -24,12 +24,14 @@ class Scraper
   end
   
   def benefits_url_array
-    benefits_url_scraper.collect{|url| "www.yogajournal.com#{url.strip}"}
+    benefits_url_scraper.collect{|url| "https://www.yogajournal.com#{url.strip}"}
   end
   
   def poses_index_scraper
-    benefits_url_array.each do |url|
-       get_page(url).css("section.m-card-group-container div.l-grid--item h2")
+    benefits_url_array.select do |url|
+       get_page(url).css("section.m-card-group-container div.l-grid--item h2").collect do |pose|
+         pose.text
+      end
     end
   end
 end
