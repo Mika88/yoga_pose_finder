@@ -28,11 +28,11 @@ class Scraper
   end
   
   def poses_index_scraper
-    benefits_url_array.select do |url|
-       get_page(url).css("section.m-card-group-container div.l-grid--item h2").collect do |pose|
-         pose.text
+    benefits_url_array.collect do |url|
+       get_page(url).css("section.m-card-group-container div.l-grid--item h2").collect do |poses|
+         poses.text
+       end
       end
     end
   end
-end
 binding.pry
