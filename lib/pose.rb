@@ -28,6 +28,8 @@ class Pose
     @@all
   end
   
+  def create_from_collection
+  end
   def print_pose
     puts "------- #{self.name} -------"
     #puts "Sanskrit Name: #{self.sanskrit_name}"

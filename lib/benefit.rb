@@ -21,21 +21,24 @@ class Benefit
     Scraper.new.yoga_by_benefit_scraper.collect{|benefit| self.new(benefit)}
   end
      
-  def self.assign_url_by_name(benefit)
+  def add_url
     Scraper.new.benefits_url_scraper.find do |url|
-      if url.split("/").last.split("-").join(" ") == benefit.name.gsub("Yoga for"," ").downcase.strip
+      if url.split("/").last.split("-").join(" ") == self.name.gsub("Yoga for"," ").downcase.strip
+        self.url = url
+      elsif url.split("/").last == "headache"
         benefit.url = url
       end
-    end
-  end
- 
-  def self.add_url
-    self.all.each do |benefit|
-      assign_url_by_name(benefit)
     end
   end
   
   def add_poses
       self.poses = Scraper.new.poses_index_scraper(self.url)
+  end
+  
+  def self.assign_attributes
+    self.all.each do |benefit|
+      add_url
+      add_poses
+    end
   end
 end

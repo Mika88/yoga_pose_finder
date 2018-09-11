@@ -23,13 +23,20 @@ class Cli
       input = gets.strip
       index = input.to_i - 1
       
-      benefits_list[index]
+      print_benefits_list[index]
   end
   
-  def benefits_list
+  def print_benefits_list
     Benefit.create_from_collection.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit.name}" }
   end
   
+  def make_benefits
+    Benefit.create_from_collection
+    Benefit.all.each do |benefit|
+      benefit.add_url
+      benefit.add_poses
+    end
+  end
   def poses_list
   end
 end
