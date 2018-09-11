@@ -37,6 +37,5 @@ class Benefit
   
   def add_poses
       self.poses = Scraper.new.poses_index_scraper(self.url)
-    end
   end
 end
