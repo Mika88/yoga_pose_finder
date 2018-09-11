@@ -39,4 +39,8 @@ class Benefit
       assign_url_by_name(benefit)
     end
   end
+  
+  def add_poses(url)
+   
+  end
 end
