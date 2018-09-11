@@ -23,14 +23,16 @@ class Scraper
     get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.m-card--content a").collect{|url| url.attribute("href").value}
   end
   
-  def benefits_url_array
+  def benefits_url_arrayq
     benefits_url_scraper.collect{|url| "https://www.yogajournal.com#{url.strip}"}
   end
   
   def poses_index_scraper
     benefits_url_array.collect do |url|
        get_page(url).css("section.m-card-group-container div.l-grid--item h2").collect do |poses|
-         poses.text
+         if !poses.text.include?("?")
+           poses.text
+        end
        end
       end
     end
