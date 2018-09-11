@@ -25,11 +25,12 @@ class Benefit
   def self.create_from_collection
     Scraper.new.benefits_array.collect{|benefit| self.new(benefit)}
   end
-  
-  def add_url(url)
-      if url.include?(self.name.gsub("Yoga for"," ").downcase.strip)
-        self.url = url
-     end
+  # if url.include?(self.name.gsub("Yoga for"," ").downcase.strip)
+     # self.url = url
+     # end
+     
+  def add_url_by_name(url)
+     url.split("/").last.split("-").join(" ")
   end
   
   def self.add_url(url)
