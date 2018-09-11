@@ -17,11 +17,6 @@ class Benefit
     @@all
   end
   
-  def add_pose(pose)
-    @poses << pose
-    pose.category = self
-  end
-  
   def self.create_from_collection
     Scraper.new.yoga_by_benefit_scraper.collect{|benefit| self.new(benefit)}
   end
@@ -40,7 +35,8 @@ class Benefit
     end
   end
   
-  def add_poses(url)
-   
+  def add_poses
+      self.poses = Scraper.new.poses_index_scraper(self.url)
+    end
   end
 end
