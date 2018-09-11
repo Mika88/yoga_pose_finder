@@ -23,25 +23,20 @@ class Benefit
   end
   
   def self.create_from_collection
-    Scraper.new.benefits_array.collect{|benefit| self.new(benefit)}
+    Scraper.new.yoga_by_benefit_scraper.collect{|benefit| self.new(benefit)}
   end
-  # if url.include?(self.name.gsub("Yoga for"," ").downcase.strip)
-     # self.url = url
-     # end
      
-  def add_url_by_name(url)
-     url.split("/").last.split("-").join(" ")
-  end
-  
-  def self.add_url(url)
-     self.all.select do |benefit|
-       if url.include?(benefit.name.gsub("Yoga for"," ").gsub("-", " ").downcase.strip)
+  def self.assign_url_by_name(benefit)
+    Scraper.new.benefits_url_scraper.find do |url|
+      if url.split("/").last.split("-").join(" ") == benefit.name.gsub("Yoga for"," ").downcase.strip
         benefit.url = url
-       end
-     end
+      end
+    end
   end
-  def self.add_url_to_all_benefits
-    Scraper.new.benefits_url_array.each{|url| self.add_url(url)}
-    
+ 
+  def self.add_url
+    self.all.each do |benefit|
+      assign_url_by_name(benefit)
+    end
   end
 end
