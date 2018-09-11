@@ -12,11 +12,7 @@ class Scraper
   end
   
   def yoga_by_benefit_scraper
-    get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.l-grid--item h2")
-  end
-  
-   def benefits_array
-    yoga_by_benefit_scraper.collect{|benefit| benefit.text}
+    get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.l-grid--item h2").collect{|benefit| benefit.text}
   end
   
   def benefits_url_scraper
