@@ -13,10 +13,10 @@ easy_pose = {
 class Pose
   attr_accessor :name, :sanskrit_name, :level, :benefit, :description, :instructions
   @@all = []
-  def initialize(pose_hash)
-     pose_hash.each do |attr, value|
-    self.send "#{attr}=", value
-    end
+  def initialize
+     #pose_hash.each do |attr, value|
+    #self.send "#{attr}=", value
+    #end
    save
   end
   
@@ -28,7 +28,16 @@ class Pose
     @@all
   end
   
-  def create_from_collection
+   def self.make_poses_array
+    poses = []
+    Benefit.all.each do |benefit|
+      poses << benefit.poses
+    end
+    poses.flatten.uniq
+  end
+  
+  def self.create_from_name
+    self.make_poses_array.each{|pose_name| Pose.new.name = pose_name}
   end
   def print_pose
     puts "------- #{self.name} -------"
