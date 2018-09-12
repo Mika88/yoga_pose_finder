@@ -17,7 +17,7 @@ class Scraper
     get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.m-card--content").each do |benefit|
       benefit_hash = {
         :name =>  benefit.css("h2").text,
-        :url => benefit.css("a").attribute("href").value
+        :url => "https://www.yogajournal.com#{benefit.css("a").attribute("href").value}"
       }
     benefits_index << benefit_hash
     end
@@ -28,13 +28,6 @@ class Scraper
     poses_index = []
     poses_hash = {}
     get_page(poses_index_url)
-  end
-  def yoga_by_benefit_scraper
-    get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.l-grid--item h2").collect{|benefit| benefit.text}
-  end
-  
-  def benefits_url_scraper
-    get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.m-card--content a").collect{|url| url.attribute("href").value}.collect{|url| "https://www.yogajournal.com#{url.strip}"}
   end
   
   def poses_index_scraper(url)
