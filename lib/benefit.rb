@@ -6,7 +6,7 @@ class Benefit
   attr_accessor :name, :poses, :url
   @@all = []
   
-  def initialize(name)
+  def initialize(name, url)
     @name = name
     @url = url
     @@all <<self
@@ -18,17 +18,7 @@ class Benefit
   end
   
   def self.create_from_collection
-    Scraper.new.yoga_by_benefit_scraper.collect{|benefit| self.new(benefit)}
-  end
-     
-  def add_url
-    Scraper.new.benefits_url_scraper.find do |url|
-      if url.split("/").last.split("-").join(" ") == self.name.gsub("Yoga for"," ").downcase.strip
-        self.url = url
-      elsif url.split("/").last == "headache"
-        self.url = url
-      end
-    end
+    Scraper.new.benefits_page_scraper.collect{|benefit| self.new(benefit[:name], benefit[:url])}
   end
   
   def add_poses
