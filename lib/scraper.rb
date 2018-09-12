@@ -26,10 +26,5 @@ class Scraper
       end
     end
   end
-  
-  def poses_url_scraper(url)
-    get_page(url).css("section.m-card-group-container div.m-card--content a").collect do |pose_urls| 
-      pose_urls.attribute("href").value}.collect{|url| "https://www.yogajournal.com#{url.strip}"}
-  end
 end
 binding.pry
