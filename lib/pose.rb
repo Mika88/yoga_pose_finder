@@ -33,7 +33,7 @@ class Pose
     Benefit.all.each do |benefit|
       poses <<  benefit.poses
     end
-    poses.flatten.uniq.sort
+    poses.flatten.compact.sort.uniq
   end
   
   def self.create_from_name
