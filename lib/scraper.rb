@@ -24,6 +24,11 @@ class Scraper
     benefits_index
   end
   
+  def poses_index_scraper
+    poses_index = []
+    poses_hash = {}
+    get_page(poses_index_url)
+  end
   def yoga_by_benefit_scraper
     get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.l-grid--item h2").collect{|benefit| benefit.text}
   end
