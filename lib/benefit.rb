@@ -26,7 +26,7 @@ class Benefit
       if url.split("/").last.split("-").join(" ") == self.name.gsub("Yoga for"," ").downcase.strip
         self.url = url
       elsif url.split("/").last == "headache"
-        benefit.url = url
+        self.url = url
       end
     end
   end
@@ -35,10 +35,11 @@ class Benefit
       self.poses = Scraper.new.poses_index_scraper(self.url)
   end
   
-  def self.assign_attributes
+  def self.make_benefits
+    self.create_from_collection
     self.all.each do |benefit|
-      add_url
-      add_poses
+      benefit.add_url
+      benefit.add_poses
     end
   end
 end
