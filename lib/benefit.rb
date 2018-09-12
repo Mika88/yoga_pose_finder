@@ -32,12 +32,4 @@ class Benefit
       benefit.add_poses
     end
   end
-  
-  def self.make_poses_array
-  poses = []
-    self.all.each do |benefit|
-      poses << benefit.poses
-    end
-    poses.flatten.uniq
-  end
 end

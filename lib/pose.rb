@@ -31,9 +31,9 @@ class Pose
    def self.make_poses_array
     poses = []
     Benefit.all.each do |benefit|
-      poses << benefit.poses
+      poses <<  benefit.poses
     end
-    poses.flatten.uniq
+    poses.flatten.uniq.sort
   end
   
   def self.create_from_name

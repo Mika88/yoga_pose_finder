@@ -24,18 +24,14 @@ class Scraper
     benefits_index
   end
   
-  def poses_index_scraper
-    poses_index = []
-    poses_hash = {}
-    get_page(poses_index_url)
-  end
-  
   def poses_index_scraper(url)
     get_page(url).css("section.m-card-group-container div.l-grid--item h2").collect do |poses|
       if !poses.text.include?("?")
            poses.text
       end
     end
+  end
+  def pose_scraper
   end
 end
 binding.pry
