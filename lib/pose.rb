@@ -39,6 +39,7 @@ class Pose
   def self.create_from_name
     self.make_poses_array.each{|pose_name| Pose.new.name = pose_name}
   end
+  
   def print_pose
     puts "------- #{self.name} -------"
     #puts "Sanskrit Name: #{self.sanskrit_name}"
