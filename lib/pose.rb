@@ -29,14 +29,6 @@ class Pose
     @@all
   end
   
-   def self.make_poses_array
-    poses = []
-    Benefit.all.each do |benefit|
-      poses <<  benefit.poses
-    end
-    poses.flatten.compact.sort.uniq
-  end
-  
   def self.create_from_name
     self.make_poses_array.each{|pose_name| Pose.new(pose_name)}
   end

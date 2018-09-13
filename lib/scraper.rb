@@ -41,9 +41,8 @@ class Scraper
         :benefits => pose.css("div.m-detail--body ul").collect{|ul| ul.css("li").collect{|li| li.text}}[-1],
         :url => "https://www.yogajournal.com#{pose.css("a").attribute("href").value}"
       }
-    poses << pose_hash
     end
-    poses
+    pose_hash
   end
 end
 binding.pry
