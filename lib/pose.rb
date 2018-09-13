@@ -11,7 +11,7 @@ easy_pose = {
       }
       
 class Pose
-  attr_accessor :name, :sanskrit_name, :level, :benefit, :description, :instructions
+  attr_accessor :name, :sanskrit_name, :benefits, :description
   @@all = []
   def initialize(name)
     @name = name
@@ -33,6 +33,9 @@ class Pose
     Benefit.make_poses_array.each{|pose_name| Pose.new(pose_name)}
   end
   
+  def add_attributes(pose_hash)
+     self.all
+  end
   def print_pose
     puts "------- #{self.name} -------"
     #puts "Sanskrit Name: #{self.sanskrit_name}"

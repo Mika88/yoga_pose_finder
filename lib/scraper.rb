@@ -32,16 +32,10 @@ class Scraper
     end
   end
   def pose_scraper(pose_url)
-    poses = []
     pose_hash = {}
-    get_page(pose_url).each do |pose|
-      pose_hash = {
-        :sanskrit_name => pose.css("div.m-detail--body p").collect{|p| p.text}[0],
-        :description => pose.css("div.m-detail-header--dek").text,
-        :benefits => pose.css("div.m-detail--body ul").collect{|ul| ul.css("li").collect{|li| li.text}}[-1],
-        :url => "https://www.yogajournal.com#{pose.css("a").attribute("href").value}"
-      }
-    end
+    pose_hash[:sanskrit_name] = get_page(pose_url).css("div.m-detail--body p").collect{|p| p.text}[1]
+    pose_hash[:description] = get_page(pose_url).css("div.m-detail-header--dek").text
+    pose_hash[:benefits] = get_page(pose_url).css("div.m-detail--body ul").collect{|ul| ul.css("li").collect{|li| li.text}}[-1]
     pose_hash
   end
 end
