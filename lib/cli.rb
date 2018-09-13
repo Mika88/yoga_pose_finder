@@ -14,29 +14,27 @@ require_relative '../config/environment'
 class Cli
   def start
     puts "Hi there Yogi! Welcome to the Find-My-Yoga App,"
-    puts "where we help you find the perfect yoga pose for you :)"
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
-    benefits_list
+    Benefit.make_benefits
+    print_benefits
       
       input = gets.strip
       index = input.to_i - 1
       
-      print_benefits_list[index]
+      print_poses(index) 
   end
   
-  def print_benefits_list
-    Benefit.create_from_collection.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit.name}" }
+  def print_benefits
+    Benefit.all.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit.name}"}
   end
   
-  def make_benefits
-    Benefit.create_from_collection
-    Benefit.all.each do |benefit|
-      benefit.add_url
-      benefit.add_poses
-    end
-  end
-  def poses_list
+  def print_poses(index)
+    puts "Great! These are the poses in the category you chose."
+    puts "To get more information about each pose,"
+    puts "enter the number of the pose."
+    
+     Benefit.all[index].poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose}"} 
   end
 end
