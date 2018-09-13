@@ -25,11 +25,14 @@ class Scraper
   end
   
   def poses_index_scraper(url)
-    get_page(url).css("section.m-card-group-container div.l-grid--item h2").collect do |poses|
-      if !poses.text.include?("?")
-           poses.text
+    pose_hash = {}
+    get_page(url).css("section.m-card-group-container div.m-card--content").collect do |poses_url|
+      pose_hash = {
+        :name => poses_url.css("h2").text,
+        :url => "https://www.yogajournal.com#{poses_url.css("a").attribute("href").value}"
+      }
+      pose_hash
       end
-    end
   end
   def pose_scraper(pose_url)
     pose_hash = {}
