@@ -30,7 +30,7 @@ class Pose
   end
   
   def self.create_from_name
-    self.make_poses_array.each{|pose_name| Pose.new(pose_name)}
+    Benefit.make_poses_array.each{|pose_name| Pose.new(pose_name)}
   end
   
   def print_pose
