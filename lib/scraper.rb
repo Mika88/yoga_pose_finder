@@ -24,16 +24,18 @@ class Scraper
     benefits_index
   end
   
-  def poses_index_scraper(url)
+  def poses_index_scraper(poses_url)
+    poses = []
     pose_hash = {}
-    get_page(url).css("section.m-card-group-container div.m-card--content").collect do |poses_url|
+    get_page(poses_url).css("section.m-card-group-container div.m-card--content").collect do |poses_url|
       pose_hash = {
         :name => poses_url.css("h2").text,
         :url => "https://www.yogajournal.com#{poses_url.css("a").attribute("href").value}"
       }
       pose_hash
-      end
+    end
   end
+  
   def pose_scraper(pose_url)
     pose_hash = {}
     pose_hash[:sanskrit_name] = get_page(pose_url).css("div.m-detail--body p").collect{|p| p.text}[1]

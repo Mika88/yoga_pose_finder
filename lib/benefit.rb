@@ -11,7 +11,7 @@ class Benefit
     @url = url
     @@all <<self
     @poses = []
-  end
+ end
   
   def self.all
     @@all
@@ -21,6 +21,9 @@ class Benefit
     Scraper.new.benefits_page_scraper.collect{|benefit| self.new(benefit[:name], benefit[:url])}
   end
   
+  def self.url_array
+    self.all.collect{|benefit| benefit.url}
+  end
   
   def add_poses
       self.poses = Scraper.new.poses_index_scraper(self.url)

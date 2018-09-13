@@ -11,14 +11,12 @@ easy_pose = {
       }
       
 class Pose
-  attr_accessor :name, :sanskrit_name, :benefits, :description
+  attr_accessor :name, :url, :sanskrit_name, :benefits, :description
   @@all = []
-  def initialize(name)
+  def initialize(name, url)
     @name = name
-     #pose_hash.each do |attr, value|
-    #self.send "#{attr}=", value
-    #end
-   save
+    @url = url
+    save
   end
   
   def save
@@ -29,9 +27,12 @@ class Pose
     @@all
   end
   
-  def self.create_from_name
-    Benefit.make_poses_array.each{|pose_name| Pose.new(pose_name)}
+  def self.create_from_collection
+    Benefit.url_array.each do |benefit_url|
+      Scraper.new.poses_index_scraper(benefit_url).each{|pose_hash| self.new(pose_hash[:name], pose_hash[:url])}
+    end
   end
+  
   
   def add_attributes(pose_hash)
      self.all
