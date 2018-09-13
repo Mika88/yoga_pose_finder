@@ -33,10 +33,20 @@ class Pose
     end
   end
   
-  
-  def add_attributes(pose_hash)
-     self.all
+  def add_attributes(attribute_hash)
+      attribute_hash.each do |attr,v|
+        self.send "#{attr}=", v
+      end
+      self
   end
+  
+  def make_pose
+    self.all.each do |pose|
+      attr_hash = Scraper.new.pose_scraper(pose.url)
+      add_attributes(attr_hash)
+    end
+  end
+  
   def print_pose
     puts "------- #{self.name} -------"
     #puts "Sanskrit Name: #{self.sanskrit_name}"
