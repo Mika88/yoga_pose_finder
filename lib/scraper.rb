@@ -11,17 +11,17 @@ class Scraper
      Nokogiri::HTML(open(url))
   end
   
-  def benefits_page_scraper
-    benefits_index = []
-    benefit_hash = {}
-    get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.m-card--content").each do |benefit|
-      benefit_hash = {
-        :name =>  benefit.css("h2").text,
-        :url => "https://www.yogajournal.com#{benefit.css("a").attribute("href").value}"
+  def categories_page_scraper
+    categories_index = []
+    category_hash = {}
+    get_page("https://www.yogajournal.com/poses/yoga-by-benefit").css("section.m-card-group-container div.m-card--content").each do |category|
+      category_hash = {
+        :name =>  category.css("h2").text,
+        :url => "https://www.yogajournal.com#{category.css("a").attribute("href").value}"
       }
-    benefits_index << benefit_hash
+    categories_index << category_hash
     end
-    benefits_index
+    categories_index
   end
   
   def poses_index_scraper(poses_url)

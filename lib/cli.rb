@@ -17,8 +17,8 @@ class Cli
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
-    Benefit.make_benefits
-    print_benefits
+    Category.make_benefits
+    print_categories
       
       input = gets.strip
       index = input.to_i - 1
@@ -26,8 +26,8 @@ class Cli
       print_poses(index) 
   end
   
-  def print_benefits
-    Benefit.all.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit.name}"}
+  def print_categories
+    Category.all.each_with_index{|category, index| puts "#{index + 1}. #{category.name}"}
   end
   
   def print_poses(index)
@@ -35,6 +35,6 @@ class Cli
     puts "To get more information about each pose,"
     puts "enter the number of the pose."
     
-     Benefit.all[index].poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose}"} 
+     Category.all[index].poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose}"} 
   end
 end

@@ -2,7 +2,7 @@
 
 require_relative '../config/environment'
 
-class Benefit
+class Category
   attr_accessor :name, :poses, :url
   @@all = []
   
@@ -18,28 +18,28 @@ class Benefit
   end
   
   def self.create_from_collection
-    Scraper.new.benefits_page_scraper.collect{|benefit| self.new(benefit[:name], benefit[:url])}
+    Scraper.new.categories_page_scraper.collect{|category| self.new(category[:name], category[:url])}
   end
   
   def self.url_array
-    self.all.collect{|benefit| benefit.url}
+    self.all.collect{|category| category.url}
   end
   
   def add_poses
       self.poses = Scraper.new.poses_index_scraper(self.url)
   end
   
-  def self.make_benefits
+  def self.make_category
     self.create_from_collection
-    self.all.each do |benefit|
-      benefit.add_poses
+    self.all.each do |category|
+      category.add_poses
     end
   end
   
   def self.make_poses_array
     poses = []
-    self.all.each do |benefit|
-      poses <<  benefit.poses
+    self.all.each do |category|
+      poses <<  category.poses
     end
     poses.flatten.compact.sort.uniq
   end
