@@ -28,8 +28,8 @@ class Pose
   end
   
   def self.create_from_collection
-    Category.url_array.each do |category_url|
-      Scraper.new.poses_index_scraper(category_url).each{|pose_hash| self.new(pose_hash[:name], pose_hash[:url])}
+    Category.all.each do |category|
+      Scraper.new.poses_index_scraper(category.url).each{|pose_hash| self.new(pose_hash[:name], pose_hash[:url])}
     end
   end
   
