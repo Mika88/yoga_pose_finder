@@ -11,7 +11,7 @@ easy_pose = {
       }
       
 class Pose
-  attr_accessor :name, :url, :description
+  attr_accessor :name, :url, :description, :sanskrit_name, :beginners_tip
   @@all = []
   def initialize(name, url)
     @name = name
@@ -40,10 +40,12 @@ class Pose
       self
   end
   
-  def make_pose
-    self.class.all.each do |pose|
-      attr_hash = Scraper.new.pose_scraper(pose.url)
-      pose.add_attributes(attr_hash)
+  def make_pose(pose_name)
+    self.class.all.find do |pose|
+      if pose_name == pose.name
+        attr_hash = Scraper.new.pose_scraper(pose.url)
+        pose.add_attributes(attr_hash)
+      end
     end
   end
   
