@@ -41,7 +41,7 @@ class Pose
   end
   
   def make_pose
-    self.all.each do |pose|
+    self.class.all.each do |pose|
       attr_hash = Scraper.new.pose_scraper(pose.url)
       pose.add_attributes(attr_hash)
     end
