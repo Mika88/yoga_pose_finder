@@ -26,7 +26,10 @@ class Category
   end
   
   def add_poses
-      self.poses = Scraper.new.poses_index_scraper(self.url)
+      Scraper.new.poses_index_scraper(self.url).each do |pose_hash| 
+        self.poses << Pose.new(pose_hash[:name], pose_hash[:url])
+      end
+      self.poses
   end
   
   def self.make_category
