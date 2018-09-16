@@ -11,7 +11,7 @@ easy_pose = {
       }
       
 class Pose
-  attr_accessor :name, :url, :description, :sanskrit_name, :beginners_tip
+  attr_accessor :name, :url, :description, :sanskrit_name, :benefits
   @@all = []
   def initialize(name, url)
     @name = name
