@@ -56,9 +56,10 @@ class Cli
  def print_pose(index)
    add_attr_to_pose(Pose.all[index])
    
-    puts "------- #{Pose.all[index].name} -------"
-    puts "Sanskrit Name: #{Pose.all[index].sanskrit_name}"
-    puts "Description: #{Pose.all[index].description}"
-    puts "Benefits: #{Pose.all[index].benefits}"
+    puts "\n""------- #{Pose.all[index].name} -------""\n"
+    puts "\n""Sanskrit Name: #{Pose.all[index].sanskrit_name}""\n"
+    puts "\n""Description: #{Pose.all[index].description}""\n"
+    puts "\n""Pose Link: #{Pose.all[index].url}""\n"
+    #puts "Benefits: #{Pose.all[index].benefits}"
   end
 end

@@ -3,13 +3,8 @@
 #let each pose know about their category
 
 require_relative '../config/environment'
+require 'launchy'
 
-easy_pose = {
-      :name=>"easy pose", 
-      :level=> "1", 
-      :description=>"Don't let the name fool you. If you're used to sitting in chairs, Easy Pose or Sukhasana can be quite challenging."
-      }
-      
 class Pose
   attr_accessor :name, :url, :description, :sanskrit_name, :benefits
   @@all = []
@@ -44,5 +39,8 @@ class Pose
       self
   end
   
+   def open_in_browser
+     system("start #{url}")
+  end
   
 end

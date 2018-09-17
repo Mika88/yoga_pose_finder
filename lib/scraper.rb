@@ -39,9 +39,10 @@ class Scraper
   def pose_scraper(pose_url)
     attribute_hash = {}
       pose_info = get_page(pose_url).css("div.m-detail--body").text.split("Pose Information")[1]
-      attribute_hash[:sanskrit_name] = pose_info.scan(/Name(.*?)Pose\b/).join.split("Pose")
+      attribute_hash[:sanskrit_name] = pose_info.scan(/Name(.*?)Pose\b/).join.split("Pose").join
       attribute_hash[:description] = get_page(pose_url).css("div.m-detail-header--dek").text
-      attribute_hash[:benefits] = get_page(pose_url).css("div.m-detail--body ul").last.css("li").collect{|li| li.text}
+      
+      #attribute_hash[:benefits] = get_page(pose_url).css("div.m-detail--body ul").last.css("li").collect{|li| li.text}
     attribute_hash
   end
 end

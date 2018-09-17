@@ -9,9 +9,9 @@ class Category
   def initialize(name, url)
     @name = name
     @url = url
-    @@all <<self
+    @@all << self
     @poses = []
- end
+  end
   
   def self.all
     @@all
