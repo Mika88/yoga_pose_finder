@@ -17,7 +17,7 @@ class Cli
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
-    Category.make_benefits
+    Category.create_from_collection
     print_categories
       
       input = gets.strip
@@ -31,10 +31,11 @@ class Cli
   end
   
   def print_poses(index)
-    puts "Great! These are the poses in the category you chose."
+    puts "Great! These are the poses in #{Category.all[index].name}."
     puts "To get more information about each pose,"
     puts "enter the number of the pose."
-    
-     Category.all[index].poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose}"} 
+     
+     poses = Category.all[index].add_poses
+     poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
   end
 end
