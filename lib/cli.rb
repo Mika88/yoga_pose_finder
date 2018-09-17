@@ -20,10 +20,23 @@ class Cli
     Category.create_from_collection
     print_categories
       
-      input = gets.strip
-      index = input.to_i - 1
+      category = gets.strip
+      index = category.to_i - 1
       
-      print_poses(index) 
+    puts "Great! These are the poses in #{Category.all[index].name}."
+    puts "To get more information about each pose,"
+    puts "enter the number of the pose."
+    
+    print_poses(index)
+    
+      pose = gets.strip
+      index = pose.to_i - 1
+    
+    puts "Awesome! Here is some information about #{Pose.all[index].name}."
+    puts "If you would like to get more information about the pose, klick on the pose link."
+    
+    print_pose(index)
+    
   end
   
   def print_categories
@@ -31,11 +44,21 @@ class Cli
   end
   
   def print_poses(index)
-    puts "Great! These are the poses in #{Category.all[index].name}."
-    puts "To get more information about each pose,"
-    puts "enter the number of the pose."
-     
      poses = Category.all[index].add_poses
      poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
+  end
+  
+  def add_attr_to_pose(pose)
+    attr_hash = Scraper.new.pose_scraper(pose.url)
+    pose.add_attributes(attr_hash)
+  end
+  
+ def print_pose(index)
+   add_attr_to_pose(Pose.all[index])
+   
+    puts "------- #{Pose.all[index].name} -------"
+    puts "Sanskrit Name: #{Pose.all[index].sanskrit_name}"
+    puts "Description: #{Pose.all[index].description}"
+    puts "Benefits: #{Pose.all[index].benefits}"
   end
 end

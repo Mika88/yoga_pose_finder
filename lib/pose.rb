@@ -44,21 +44,5 @@ class Pose
       self
   end
   
-  def make_pose(pose_name)
-    self.class.all.find do |pose|
-      if pose_name == pose.name
-        attr_hash = Scraper.new.pose_scraper(pose.url)
-        pose.add_attributes(attr_hash)
-      end
-    end
-  end
   
-  def print_pose
-    puts "------- #{self.name} -------"
-    #puts "Sanskrit Name: #{self.sanskrit_name}"
-    puts "Level: #{self.level} "
-    #puts "Benefits: #{self.benefits}"
-    puts "Description: #{self.description}"
-    #puts "How to do the pose: #{self.instruction}"
-  end
 end
