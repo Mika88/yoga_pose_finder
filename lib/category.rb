@@ -32,15 +32,14 @@ class Category
       self.poses
   end
   
-  def self.make_category
-    self.create_from_collection
-    self.all.each do |category|
-      category.add_poses
-    end
-  end
+  #def self.make_category
+  #  self.create_from_collection
+  #  self.all.each do |category|
+  #    category.add_poses
+  #  end
+ # end
   
   def self.make_poses_array
-    poses = []
     self.all.each do |category|
       poses <<  category.poses
     end

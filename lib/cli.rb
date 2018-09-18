@@ -17,11 +17,15 @@ class Cli
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
-    Category.create_from_collection
-    print_categories
-      
-      category = gets.strip
-      index = category.to_i - 1
+    if Category.all.empty?
+      Category.create_from_collection
+      print_categories
+    else
+      print_categories
+    end
+    
+      input = gets.strip
+      index = input.to_i - 1
       
     puts "Great! These are the poses in #{Category.all[index].name}."
     puts "To get more information about each pose,"
@@ -29,13 +33,13 @@ class Cli
     
     print_poses(index)
     
-      pose = gets.strip
-      index = pose.to_i - 1
+      input = gets.strip
+      index = input.to_i - 1
     
     puts "Awesome! Here is some information about #{Pose.all[index].name}."
     puts "If you would like to get more information about the pose, check out the pose link."
     
-    print_pose(index)
+    #print_pose(index)
     
   end
   
@@ -53,7 +57,8 @@ class Cli
     pose.add_attributes(attr_hash)
   end
   
- def print_pose(index)
+ def print_pose(pose_name)
+   pose.find_be_name
    add_attr_to_pose(Pose.all[index])
    
     puts "\n""------- #{Pose.all[index].name} -------""\n"
