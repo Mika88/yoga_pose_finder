@@ -48,8 +48,13 @@ class Cli
   end
   
   def print_poses(index)
-     poses = Category.all[index].add_poses
-     poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
+    category = Category.all[index]
+    if category.poses.empty?
+     category.add_poses
+   else
+     category.poses
+   end
+     category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
   end
   
   def add_attr_to_pose(pose)
