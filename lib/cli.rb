@@ -13,7 +13,7 @@ require_relative '../config/environment'
 
 class Cli
   def start
-    puts "Hi there Yogi! Welcome to the Find-My-Yoga App,"
+    puts "Hi there Yogi! Welcome to the Yoga-Pose-Finder App,"
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
@@ -36,7 +36,7 @@ class Cli
       input = gets.strip
       index = input.to_i - 1
     
-    puts "Awesome! Here is some information about #{Pose.all[index].name}."
+    puts "Awesome! Here is some information about #{pose.name}."
     puts "If you would like to get more information about the pose, check out the pose link."
     
     #print_pose(index)
@@ -49,11 +49,12 @@ class Cli
   
   def print_poses(index)
     category = Category.all[index]
+    
     if category.poses.empty?
      category.add_poses
-   else
+    else
      category.poses
-   end
+    end
      category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
   end
   
