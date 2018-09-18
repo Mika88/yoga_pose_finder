@@ -3,7 +3,7 @@
 #let each pose know about their category
 
 require_relative '../config/environment'
-require 'launchy'
+
 
 class Pose
   attr_accessor :name, :url, :description, :sanskrit_name, :benefits

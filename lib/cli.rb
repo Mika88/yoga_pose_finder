@@ -33,7 +33,7 @@ class Cli
       index = pose.to_i - 1
     
     puts "Awesome! Here is some information about #{Pose.all[index].name}."
-    puts "If you would like to get more information about the pose, klick on the pose link."
+    puts "If you would like to get more information about the pose, check out the pose link."
     
     print_pose(index)
     
