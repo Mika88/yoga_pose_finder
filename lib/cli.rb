@@ -24,53 +24,55 @@ class Cli
       print_categories
     end
     
-      input = gets.strip
-      index = input.to_i - 1
-      
-    puts "Great! These are the poses in #{Category.all[index].name}."
+     input = gets.strip
+     index = input.to_i - 1
+     
+    @category = Category.all[index]
+    puts "Great! These are the poses in #{@category.name}."
     puts "To get more information about each pose,"
     puts "enter the number of the pose."
     
-    print_poses(index)
+    if @category.poses.empty?
+     @category.add_poses
+    else
+     @category.poses
+    end
+    
+    print_poses
     
       input = gets.strip
       index = input.to_i - 1
-    
-    puts "Awesome! Here is some information about #{pose.name}."
+      
+    @pose = @category.poses[index]
+    puts "Awesome! Here is some information about #{@pose.name}."
     puts "If you would like to get more information about the pose, check out the pose link."
     
-    #print_pose(index)
-    
+    if @pose.description == nil
+      add_attr_to_pose
+      print_pose
+    else
+      print_pose
+    end
   end
   
   def print_categories
     Category.all.each_with_index{|category, index| puts "#{index + 1}. #{category.name}"}
   end
   
-  def print_poses(index)
-    category = Category.all[index]
-    
-    if category.poses.empty?
-     category.add_poses
-    else
-     category.poses
-    end
-     category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
+  def print_poses
+     @category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
   end
   
-  def add_attr_to_pose(pose)
-    attr_hash = Scraper.new.pose_scraper(pose.url)
-    pose.add_attributes(attr_hash)
+  def add_attr_to_pose
+    attr_hash = Scraper.new.pose_scraper(@pose.url)
+    @pose.add_attributes(attr_hash)
   end
   
- def print_pose(pose_name)
-   pose.find_be_name
-   add_attr_to_pose(Pose.all[index])
-   
-    puts "\n""------- #{Pose.all[index].name} -------""\n"
-    puts "\n""Sanskrit Name: #{Pose.all[index].sanskrit_name}""\n"
-    puts "\n""Description: #{Pose.all[index].description}""\n"
-    puts "\n""Pose Link: #{Pose.all[index].url}""\n"
+ def print_pose
+    puts "\n""------- #{@pose.name} -------""\n"
+    puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
+    puts "\n""Description: #{@pose.description}""\n"
+    puts "\n""Pose Link: #{@pose.url}""\n"
     #puts "Benefits: #{Pose.all[index].benefits}"
   end
 end
