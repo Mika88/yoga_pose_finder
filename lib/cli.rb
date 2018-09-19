@@ -80,16 +80,22 @@ class Cli
   def print_pose
     
       puts "\n""------- #{@pose.name} -------""\n"
-      puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
+      
+      if @pose.sanskrit_name == ""
+        puts ""
+      else
+        puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
+      end
+      
       puts "\n""Description: #{@pose.description}""\n"
-      puts "\n""Benefits:"
-        benefits_list
+      puts "\n""Benefits:""\n"
+      benefits_list
       puts "\n""Pose Link: #{@pose.url}""\n"
       another_pose
   end
   
   def benefits_list
-    @pose.benefits.each_with_index{|benefit, index| puts "\n""#{index + 1}. #{benefit}.""\n"}
+      @pose.benefits.each_with_index{|benefit, index| puts "\n""#{index + 1}. #{benefit}.""\n"}
   end
   
   def try_again

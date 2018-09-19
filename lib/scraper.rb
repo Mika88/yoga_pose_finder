@@ -45,3 +45,4 @@ class Scraper
     attribute_hash
   end
 end
+binding.pry
