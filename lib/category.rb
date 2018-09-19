@@ -27,7 +27,7 @@ class Category
   
   def add_poses
       Scraper.new.poses_index_scraper(self.url).each do |pose_hash| 
-        self.poses << Pose.new(pose_hash[:name], pose_hash[:url])
+        self.poses << Pose.new(pose_hash[:name], pose_hash[:url]) unless pose_hash[:name].include?("?")
       end
       self.poses
   end

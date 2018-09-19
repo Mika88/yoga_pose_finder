@@ -69,9 +69,7 @@ class Cli
   end
   
   def print_poses
-     @category.poses.each_with_index do |pose, index|
-       puts "#{index + 1}. #{pose.name}"
-     end
+     @category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"}
   end
   
   def add_attr_to_pose
