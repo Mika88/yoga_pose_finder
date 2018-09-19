@@ -77,17 +77,27 @@ class Cli
     @pose.add_attributes(attr_hash)
   end
   
- def print_pose
+  def print_pose
     puts "\n""------- #{@pose.name} -------""\n"
-    puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
-    puts "\n""Description: #{@pose.description}""\n"
-    puts "\n""Pose Link: #{@pose.url}""\n"
-    #puts "Benefits: #{Pose.all[index].benefits}"
+      puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
+      puts "\n""Description: #{@pose.description}""\n"
+      puts "\n""Benefits: #{@pose.benefits}""\n"
+      puts "\n""Pose Link: #{@pose.url}""\n"
+      another_pose
   end
   
   def try_again
     puts "Sorry, the number you entered is not on the list."
     puts "Please, try again."
     input = gets.strip
+  end
+  
+  def another_pose
+    puts "\n""Thank you for using the yoga-pose-finder app!""\n"
+    puts "Would you like to find another pose? (y/n)"
+    input = gets.strip
+    if input == "y"
+      start
+    end
   end
 end

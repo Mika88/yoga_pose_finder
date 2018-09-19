@@ -34,7 +34,7 @@ class Pose
   
   def add_attributes(attribute_hash)
       attribute_hash.each do |attr,v|
-        self.send "#{attr}=", v
+          self.send "#{attr}=", v 
       end
       self
   end
