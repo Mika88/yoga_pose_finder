@@ -13,7 +13,7 @@ require_relative '../config/environment'
 
 class Cli
   def start
-    puts "Hi there Yogi! Welcome to the Yoga-Pose-Finder App,"
+    puts "\n""Hi there Yogi! Welcome to the Yoga-Pose-Finder App,""\n"
     puts "Look through this list of categories and enter the number of"
     puts "the category you would like to check out." 
     
@@ -65,11 +65,11 @@ class Cli
   end
   
   def print_categories
-    Category.all.each_with_index{|category, index| puts "#{index + 1}. #{category.name}"}
+    Category.all.each_with_index{|category, index|  puts "\n""#{index + 1}. #{category.name}""\n"}
   end
   
   def print_poses
-     @category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"}
+     @category.poses.each_with_index{|pose, index| puts "\n""#{index + 1}. #{pose.name}""\n"}
   end
   
   def add_attr_to_pose
@@ -88,7 +88,7 @@ class Cli
   end
   
   def benefits_list
-    @pose.benefits.each_with_index{|benefit, index| puts "#{index + 1}. #{benefit}."}
+    @pose.benefits.each_with_index{|benefit, index| puts "\n""#{index + 1}. #{benefit}.""\n"}
   end
   
   def try_again
