@@ -53,9 +53,8 @@ class Cli
      index = input.to_i - 1
       
     @pose = @category.poses[index]
-    puts "Here is some information about #{@pose.name}."
-    puts "If you would like to get more information about the pose, check out the pose link."
-    
+    puts "Great! Here is some information about:"
+
     if @pose.description == nil
       add_attr_to_pose
       print_pose
@@ -90,7 +89,6 @@ class Cli
       puts "\n""Description: #{@pose.description}""\n"
       puts "\n""Benefits:""\n"
       benefits_list
-      puts "\n""Pose Link: #{@pose.url}""\n"
       another_pose
   end
   
