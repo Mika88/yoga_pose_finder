@@ -25,8 +25,12 @@ class Cli
     end
     
      input = gets.strip
-     index = input.to_i - 1
+   
+     while !input.to_i.between?(1, 25)
+       input = try_again
+     end
      
+     index = input.to_i - 1
     @category = Category.all[index]
     puts "Great! These are the poses in #{@category.name}."
     puts "To get more information about each pose,"
@@ -41,7 +45,12 @@ class Cli
     print_poses
     
       input = gets.strip
-      index = input.to_i - 1
+   
+     while !input.to_i.between?(1, @category.poses.size)
+       input = try_again
+     end
+     
+     index = input.to_i - 1
       
     @pose = @category.poses[index]
     puts "Awesome! Here is some information about #{@pose.name}."
@@ -60,7 +69,9 @@ class Cli
   end
   
   def print_poses
-     @category.poses.each_with_index{|pose, index| puts "#{index + 1}. #{pose.name}"} 
+     @category.poses.each_with_index do |pose, index|
+       puts "#{index + 1}. #{pose.name}"
+     end
   end
   
   def add_attr_to_pose
@@ -74,5 +85,11 @@ class Cli
     puts "\n""Description: #{@pose.description}""\n"
     puts "\n""Pose Link: #{@pose.url}""\n"
     #puts "Benefits: #{Pose.all[index].benefits}"
+  end
+  
+  def try_again
+    puts "Sorry, the number you entered is not on the list."
+    puts "Please, try again."
+    input = gets.strip
   end
 end
