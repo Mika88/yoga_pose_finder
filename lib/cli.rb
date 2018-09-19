@@ -78,11 +78,12 @@ class Cli
   end
   
   def print_pose
+    
       puts "\n""------- #{@pose.name} -------""\n"
       puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
       puts "\n""Description: #{@pose.description}""\n"
       puts "\n""Benefits:"
-      benefits_list
+        benefits_list
       puts "\n""Pose Link: #{@pose.url}""\n"
       another_pose
   end

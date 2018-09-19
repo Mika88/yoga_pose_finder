@@ -8,16 +8,13 @@ require_relative '../config/environment'
 class Pose
   attr_accessor :name, :url, :description, :sanskrit_name, :benefits
   @@all = []
+  
   def initialize(name, url)
     @name = name
     @url = url
-    save
-  end
-  
-  def save
     @@all << self
   end
-  
+
   def self.all
     @@all
   end
