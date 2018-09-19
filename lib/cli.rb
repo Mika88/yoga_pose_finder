@@ -32,7 +32,7 @@ class Cli
      
      index = input.to_i - 1
     @category = Category.all[index]
-    puts "Great! These are the poses in #{@category.name}."
+    puts "These are the poses in #{@category.name}."
     puts "To get more information about each pose,"
     puts "enter the number of the pose."
     
@@ -53,7 +53,7 @@ class Cli
      index = input.to_i - 1
       
     @pose = @category.poses[index]
-    puts "Awesome! Here is some information about #{@pose.name}."
+    puts "Here is some information about #{@pose.name}."
     puts "If you would like to get more information about the pose, check out the pose link."
     
     if @pose.description == nil

@@ -25,10 +25,6 @@ class Pose
     end
   end
   
-  #def find_pose_by_name(name)
-  #  self.all.find{|pose| name == pose.name}
-  #end
-  
   def add_attributes(attribute_hash)
       attribute_hash.each do |attr,v|
           self.send "#{attr}=", v 
