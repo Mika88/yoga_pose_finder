@@ -1,12 +1,6 @@
-#scrape index page of yoga categories
-#scrape index page of poses of each category
-#scrape each pose
-
 require_relative '../config/environment'
 
 class Scraper
-  attr_accessor :url
-  
   def get_page(url)
      Nokogiri::HTML(open(url))
   end
@@ -50,3 +44,4 @@ class Scraper
     attribute_hash
   end
 end
+binding.pry

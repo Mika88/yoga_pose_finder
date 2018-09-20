@@ -1,14 +1,3 @@
-
-#should greet the user
-#print out list of categories
-#ask for the desired category/ pose finder?
-#ask the level of user- begginer, intermediate, advenced or all levels
-#print out the list of poses
-#ask which one the user wants
-#show the info of the pose
-#ask the user if he wants to choose a different pose fron same category, or go back to main list. 
-#create a pose finder with all poses -- alphabetized w.(category)-> allow user to choose from list. 
-
 require_relative '../config/environment'
 
 class Cli
@@ -25,12 +14,11 @@ class Cli
     end
     
      input = gets.strip
-   
      while !input.to_i.between?(1, 25)
        input = try_again
      end
      
-     index = input.to_i - 1
+    index = input.to_i - 1
     @category = Category.all[index]
     puts "These are the poses in #{@category.name}."
     puts "To get more information about each pose,"
@@ -44,14 +32,12 @@ class Cli
     
     print_poses
     
-      input = gets.strip
-   
+    input = gets.strip
      while !input.to_i.between?(1, @category.poses.size)
        input = try_again
      end
      
      index = input.to_i - 1
-      
     @pose = @category.poses[index]
     puts "Great! Here is some information about:"
 
@@ -61,6 +47,7 @@ class Cli
     else
       print_pose
     end
+    another_pose
   end
   
   def print_categories
@@ -77,25 +64,22 @@ class Cli
   end
   
   def print_pose
-    
-      puts "\n""------- #{@pose.name} -------""\n"
+    puts "\n""------- #{@pose.name} -------""\n"
       
-      if @pose.sanskrit_name == ""
-        puts ""
-      else
-        puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
-      end
+    if @pose.sanskrit_name == ""
+      puts ""
+    else
+      puts "\n""Sanskrit Name: #{@pose.sanskrit_name}""\n"
+    end
       
-      puts "\n""Description: #{@pose.description}""\n"
+    puts "\n""Description: #{@pose.description}""\n"
       
-      if @pose.benefits[0] == "benefits not found"
-        puts ""
-      else
-        puts "\n""Benefits:""\n"
-        benefits_list
-      end
-      
-      another_pose
+    if @pose.benefits[0] == "benefits not found"
+      puts ""
+    else
+      puts "\n""Benefits:""\n"
+      benefits_list
+    end
   end
   
   def benefits_list

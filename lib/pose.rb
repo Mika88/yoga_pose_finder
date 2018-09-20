@@ -19,21 +19,10 @@ class Pose
     @@all
   end
   
-  def self.create_from_collection
-    Category.all.each do |category|
-      Scraper.new.poses_index_scraper(category.url).each{|pose_hash| self.new(pose_hash[:name], pose_hash[:url])}
-    end
-  end
-  
   def add_attributes(attribute_hash)
       attribute_hash.each do |attr,v|
           self.send "#{attr}=", v 
       end
       self
   end
-  
-   def open_in_browser
-     system("start #{url}")
-  end
-  
 end
