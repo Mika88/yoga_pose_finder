@@ -39,7 +39,7 @@ class Scraper
       if benefits
         attribute_hash[:benefits] = benefits.css("li").collect{|li| li.text}
       else
-         attribute_hash[:benefits] = ["benefits not found"]
+         attribute_hash[:benefits] = "benefits not found"
       end
     attribute_hash
   end

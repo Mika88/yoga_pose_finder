@@ -74,7 +74,7 @@ class Cli
       
     puts "\n""Description: #{@pose.description}""\n"
       
-    if @pose.benefits[0] == "benefits not found"
+    if @pose.benefits == "benefits not found"
       puts ""
     else
       puts "\n""Benefits:""\n"

@@ -1,9 +1,4 @@
-#initialize a new pose with attr.
-#save all poses to an Array
-#let each pose know about their category
-
 require_relative '../config/environment'
-
 
 class Pose
   attr_accessor :name, :url, :description, :sanskrit_name, :benefits
