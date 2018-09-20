@@ -87,8 +87,14 @@ class Cli
       end
       
       puts "\n""Description: #{@pose.description}""\n"
-      puts "\n""Benefits:""\n"
-      benefits_list
+      
+      if @pose.benefits[0] == "benefits not found"
+        puts ""
+      else
+        puts "\n""Benefits:""\n"
+        benefits_list
+      end
+      
       another_pose
   end
   
@@ -105,8 +111,8 @@ class Cli
   def another_pose
     puts "\n""Thank you for using the yoga-pose-finder app!""\n"
     puts "Would you like to find another pose? (y/n)"
-    input = gets.strip
-    if input == "y"
+    input = gets.strip.downcase
+    if input == "y" || input == "yes"
       start
     end
   end
