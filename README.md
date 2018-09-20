@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Usage
 
-You can start the program by entering 'ruby bin/yoga-pose-finder' into the command line,
+Start the program by entering 'ruby bin/yoga-pose-finder' into the command line,
 and follow the instructions provided on the screen. 
 
 ## Development
