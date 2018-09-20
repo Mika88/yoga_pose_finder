@@ -1,8 +1,10 @@
 # YogaPoseFinder
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yoga_pose_finder`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the Yoga-Pose-Finder Gem! 
+This Gem provides a list of 25 different 'Yoga for' categories, and prompts the user to choose a desired category, using CLI. 
+Each category contains a list of yoga poses from which the user can choose a pose.
+Each pose contains some information, like: name, sanskrit name, a short description and benefits.
+After choosing a pose and getting the information, the user is asked if they would like to find another pose. 
 
 ## Installation
 
