@@ -23,7 +23,7 @@ Or install it yourself as:
     $ gem install yoga_pose_finder
 
 ## Usage
-
+Make sure you are inside the yoga_pose_finder directory. 
 Start the program by entering 'ruby bin/yoga-pose-finder' into the command line,
 and follow the instructions provided on the screen. 
 
