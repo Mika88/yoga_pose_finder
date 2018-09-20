@@ -93,11 +93,16 @@ class Cli
   end
   
   def another_pose
-    puts "\n""Thank you for using the yoga-pose-finder app!""\n"
-    puts "Would you like to find another pose? (y/n)"
+    puts "\n""Would you like to find another pose? (y/n)""\n"
     input = gets.strip.downcase
     if input == "y" || input == "yes"
       start
+    elsif input == "n" || input == "no"
+      puts "\n""Thank you for using the yoga-pose-finder app!""\n"
+      exit
+    else
+      puts "Sorry, I didn't understand that answer."
+      another_pose
     end
   end
 end
