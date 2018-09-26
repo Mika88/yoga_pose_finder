@@ -1,4 +1,3 @@
-require_relative '../config/environment'
 
 class Category
   attr_accessor :name, :poses, :url

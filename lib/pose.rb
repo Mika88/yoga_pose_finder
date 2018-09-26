@@ -1,5 +1,3 @@
-require_relative '../config/environment'
-
 class Pose
   attr_accessor :name, :url, :description, :sanskrit_name, :benefits
   @@all = []

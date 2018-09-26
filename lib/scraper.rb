@@ -1,8 +1,6 @@
-require_relative '../config/environment'
-
 class Scraper
   def get_page(url)
-     Nokogiri::HTML(open(url))
+     @doc ||= Nokogiri::HTML(open(url))
   end
   
   def categories_page_scraper
@@ -18,10 +16,11 @@ class Scraper
     categories_index
   end
   
+ 
   def poses_index_scraper(poses_url)
     poses = []
     pose_hash = {}
-    get_page(poses_url).css("section.m-card-group-container div.m-card--content").collect do |poses_url|
+     Nokogiri::HTML(open(poses_url)).css("section.m-card-group-container div.m-card--content").collect do |poses_url|
       pose_hash = {
         :name => poses_url.css("h2").text,
         :url => "https://www.yogajournal.com#{poses_url.css("a").attribute("href").value}"
@@ -32,13 +31,15 @@ class Scraper
   
   def pose_scraper(pose_url)
     attribute_hash = {}
-      pose_info = get_page(pose_url).css("div.m-detail--body").text.split("Pose Information")[1]
+    pose_page = Nokogiri::HTML(open(pose_url))
+      pose_info = pose_page.css("div.m-detail--body").text.split("Pose Information")[1]
       attribute_hash[:sanskrit_name] = pose_info.scan(/Name(.*?)Pose\b/).join.split("Pose").join
-      attribute_hash[:description] = get_page(pose_url).css("div.m-detail-header--dek").text
-      benefits = get_page(pose_url).css("div.m-detail--body ul").last
+      attribute_hash[:description] = pose_page.css("div.m-detail-header--dek").text
+      benefits = pose_page.css("div.m-detail--body ul").last
       if benefits
         attribute_hash[:benefits] = benefits.css("li").collect{|li| li.text}
       else
+        
          attribute_hash[:benefits] = "benefits not found"
       end
     attribute_hash

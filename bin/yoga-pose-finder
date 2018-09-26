@@ -1,6 +1,5 @@
-require_relative '../lib/pose'
-require_relative '../lib/category'
-require_relative '../lib/cli'
-require_relative '../lib/scraper'
+#!/usr/local/bin/ruby
+
+require_relative '../lib/yoga_pose_finder'
 
 Cli.new.start

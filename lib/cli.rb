@@ -1,17 +1,14 @@
-require_relative '../config/environment'
-
 class Cli
   def start
-    puts "\n""Hi there Yogi! Welcome to the Yoga-Pose-Finder App,""\n"
-    puts "Look through this list of categories and enter the number of"
-    puts "the category you would like to check out." 
-    
     if Category.all.empty?
       Category.create_from_collection
       print_categories
     else
       print_categories
     end
+    puts "\n""Hi there Yogi! Welcome to the Yoga-Pose-Finder App,""\n"
+    puts "Look through the list of categories and enter the number of"
+    puts "the category you would like to check out." 
     
      input = gets.strip
      while !input.to_i.between?(1, 25)
@@ -20,10 +17,7 @@ class Cli
      
     index = input.to_i - 1
     @category = Category.all[index]
-    puts "These are the poses in #{@category.name}."
-    puts "To get more information about each pose,"
-    puts "enter the number of the pose."
-    
+   
     if @category.poses.empty?
      @category.add_poses
     else
@@ -31,6 +25,9 @@ class Cli
     end
     
     print_poses
+    puts "\n""Above are the poses in #{@category.name}.""\n"
+    puts "To get more information about each pose,"
+    puts "please enter the number of the pose."
     
     input = gets.strip
      while !input.to_i.between?(1, @category.poses.size)
@@ -80,6 +77,9 @@ class Cli
       puts "\n""Benefits:""\n"
       benefits_list
     end
+    
+     puts "\n""To get more information about the pose, please visit the link below:""\n"
+     puts "#{@pose.url}"
   end
   
   def benefits_list
