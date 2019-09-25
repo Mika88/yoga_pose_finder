@@ -15,16 +15,10 @@ class Cli
        input = try_again
      end
      
-    index = input.to_i - 1
-    @category = Category.all[index]
-   
-    if @category.poses.empty?
-     @category.add_poses
-    else
-     @category.poses
-    end
-    
+    category_index = input.to_i - 1
+    @category = Category.all[category_index]
     print_poses
+
     puts "\n""Above are the poses in #{@category.name}.""\n"
     puts "To get more information about each pose,"
     puts "please enter the number of the pose."
@@ -34,8 +28,8 @@ class Cli
        input = try_again
      end
      
-     index = input.to_i - 1
-    @pose = @category.poses[index]
+    pose_index = input.to_i - 1
+    @pose = @category.poses[pose_index]
     puts "Great! Here is some information about:"
 
     if @pose.description == nil
@@ -52,6 +46,7 @@ class Cli
   end
   
   def print_poses
+     @category.add_poses if @category.poses.empty?
      @category.poses.each_with_index{|pose, index| puts "\n""#{index + 1}. #{pose.name}""\n"}
   end
   
